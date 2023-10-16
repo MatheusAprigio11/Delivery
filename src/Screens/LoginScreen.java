@@ -14,7 +14,9 @@ public class LoginScreen extends JFrame {
     public LoginScreen() {
         // Carregando a imagem de fundo
         try {
-            imagemDeFundo = ImageIO.read(new File("/images/GILogin.png"));
+            File fileName = new File("");
+            String url = fileName.getAbsolutePath() + "\\src\\images\\GILogin.png"; 
+            imagemDeFundo = ImageIO.read(new File(url));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -26,13 +28,7 @@ public class LoginScreen extends JFrame {
         setLocationRelativeTo(null);
 
         // Adicionando um JPanel personalizado com a imagem de fundo
-        JPanel painelComImagem = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                g.drawImage(imagemDeFundo, 0, 0, getWidth(), getHeight(), this);
-            }
-        };
+        
 
         setContentPane(painelComImagem);
     }
