@@ -1,36 +1,20 @@
 public class User extends Login{
-
-    super()
+    private String username;
+    private String password;
     public String name;
     private int posX;
     private int posY;
     private String cpf;
 
     public User(String name, String username, String password, int posX, int posY, String cpf){
+        super();
         this.name = name;
-        this.username = username;
-        this.password = password;
+        this.setUsername(username);
+        this.setPassword(password);
         this.posX = posX;
         this.posY = posY;
-        this.cpf = cpf;
+        this.setCpf(cpf);
 
-        super.setUsername();
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public int getPosX() {
