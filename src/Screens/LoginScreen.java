@@ -1,42 +1,42 @@
 package Screens;
 
+import Components.Buttons;
+import Components.Inputs;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
-import java.io.File;
-import java.io.IOException;
+import java.util.Objects;
 
 public class LoginScreen extends JFrame {
-
-    private BufferedImage imagemDeFundo;
+    JLabel label;
 
     public LoginScreen() {
-        // Carregando a imagem de fundo
-        try {
-            File fileName = new File("");
-            String url = fileName.getAbsolutePath() + "\\src\\images\\GILogin.png"; 
-            imagemDeFundo = ImageIO.read(new File(url));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        Container frame = getContentPane();
+        frame.setLayout(null);
 
-        // Configurando o JFrame
-        setTitle("JFrame com Imagem de Fundo");
-        setSize(800, 600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
+        ImageIcon wallpaper = new ImageIcon(Objects.requireNonNull(getClass().getResource("../images/GILogin.png")));
+        label = new JLabel(wallpaper);
+        label.setBounds(-5, -30, 800, 600);
+        frame.add(label);
 
-        // Adicionando um JPanel personalizado com a imagem de fundo
-        
+        Inputs loginCamp = new Inputs(385, 34, 212, 323);
+        Inputs passwordCamp = new Inputs(385,34,212,392);
+        label.add(loginCamp);
+        label.add(passwordCamp);
 
-        setContentPane(painelComImagem);
+        Buttons signIn = new Buttons(349,455,101,48);
+        Buttons newRestaurant = new Buttons(673,470,88,40);
+        Buttons newCostumer = new Buttons(673,542,88,40);
+        label.add(signIn);
+        label.add(newRestaurant);
+        label.add(newCostumer);
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            LoginScreen frame = new LoginScreen();
-            frame.setVisible(true);
-        });
+        LoginScreen frame = new LoginScreen();
+        frame.setSize(800,600);
+        frame.setResizable(false);
+        frame.setVisible(true);
     }
 }
