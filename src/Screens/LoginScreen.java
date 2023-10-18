@@ -5,6 +5,8 @@ import Components.Inputs;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Objects;
 
 public class LoginScreen extends JFrame {
@@ -31,6 +33,16 @@ public class LoginScreen extends JFrame {
         label.add(signIn);
         label.add(newRestaurant);
         label.add(newCostumer);
+
+        signIn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ClientHome clientHome = new ClientHome();
+                clientHome.abrirClientHome();
+                dispose();
+            }
+        });
+
     }
 
     public static void main(String[] args) {
