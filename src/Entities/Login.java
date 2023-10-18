@@ -1,3 +1,5 @@
+package Entities;
+
 public class Login {
     private String username;
     private String password;

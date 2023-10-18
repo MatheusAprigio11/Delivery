@@ -30,9 +30,11 @@ public class LoginScreen extends JFrame {
         Buttons signIn = new Buttons(349,455,101,48);
         Buttons newRestaurant = new Buttons(673,470,88,40);
         Buttons newCostumer = new Buttons(673,542,88,40);
+        Buttons backScreen = new Buttons(48,511, 39,39);
         label.add(signIn);
         label.add(newRestaurant);
         label.add(newCostumer);
+        label.add(backScreen);
 
         signIn.addActionListener(new ActionListener() {
             @Override
@@ -43,6 +45,23 @@ public class LoginScreen extends JFrame {
             }
         });
 
+        newRestaurant.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SignUpRestaurant signUpRestaurant = new SignUpRestaurant();
+                signUpRestaurant.openSignUpRestaurant();
+                dispose();
+            }
+        });
+
+        newCostumer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SignUpClient signUpClient = new SignUpClient();
+                signUpClient.openSignUpClient();
+                dispose();
+            }
+        });
     }
 
     public static void main(String[] args) {

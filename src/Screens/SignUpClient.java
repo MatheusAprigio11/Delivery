@@ -2,7 +2,9 @@ package Screens;
 
 import Components.Buttons;
 import Components.Inputs;
-
+import java.util.ArrayList;
+import Entities.App;
+import Entities.User;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
@@ -21,19 +23,35 @@ public class SignUpClient extends JFrame {
         frame.add(label);
 
         Inputs name = new Inputs(385, 34, 35, 173);
-        Inputs cpf = new Inputs(385, 34, 35, 248);
+        Inputs password = new Inputs(385, 34, 35, 248);
         Inputs posX = new Inputs(385, 34, 35, 323);
         Inputs posY = new Inputs(385, 34, 35, 398);
         label.add(name);
-        label.add(cpf);
+        label.add(password);
         label.add(posX);
         label.add(posY);
 
-        Buttons signUp = new Buttons(338,488,196,65);
-        label.add(signUp);
+        Buttons signUpRegister = new Buttons(338,488,196,65);
+
+
+        signUpRegister.addActionListener(e -> {
+            if (name.getText().equals("") || password.getText().equals("") || posX.getText().equals("") || posY.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "fill correct all the fields.");
+            }else {
+                User user = new User(name.getText(), password.getText(), Integer.parseInt(posX.getText()), Integer.parseInt(posY.getText()));
+                System.out.println(user);
+                App.users.add(user);
+            }
+            System.out.println(App.users);
+
+            for (User usu:App.users) {
+                System.out.println(usu.getPassword());
+            }
+        });
+        label.add(signUpRegister);
 
     }
-    public static void main(String[] args) {
+    public void openSignUpClient() {
         SignUpClient frame = new SignUpClient();
         frame.setSize(800,600);
         frame.setResizable(false);

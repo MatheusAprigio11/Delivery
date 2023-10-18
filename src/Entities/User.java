@@ -1,20 +1,35 @@
-public class User extends Login{
-    private String username;
+package Entities;
+
+public class User {
+
     private String password;
-    public String name;
+    public String username;
     private int posX;
     private int posY;
-    private String cpf;
 
-    public User(String name, String username, String password, int posX, int posY, String cpf){
-        super();
-        this.name = name;
+    public User(String username, String password, int posX, int posY) {
         this.setUsername(username);
         this.setPassword(password);
         this.posX = posX;
         this.posY = posY;
-        this.setCpf(cpf);
 
+    }
+
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getPosX() {
@@ -32,12 +47,5 @@ public class User extends Login{
     public void setPosY(int posY) {
         this.posY = posY;
     }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
 }
+

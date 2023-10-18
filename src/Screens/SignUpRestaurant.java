@@ -32,7 +32,7 @@ public class SignUpRestaurant extends JFrame {
         label.add(signUp);
 
     }
-    public static void main(String[] args) {
+    public void openSignUpRestaurant() {
         SignUpRestaurant frame = new SignUpRestaurant();
         frame.setSize(800,600);
         frame.setResizable(false);
