@@ -2,6 +2,9 @@ package Screens;
 
 import Components.Buttons;
 import Components.Inputs;
+import Entities.App;
+import Entities.Restaurant;
+import Entities.User;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,25 +26,35 @@ public class LoginScreen extends JFrame {
         frame.add(label);
 
         Inputs loginCamp = new Inputs(385, 34, 212, 323);
-        Inputs passwordCamp = new Inputs(385,34,212,392);
+        Inputs passwordCamp = new Inputs(385, 34, 212, 392);
         label.add(loginCamp);
         label.add(passwordCamp);
 
-        Buttons signIn = new Buttons(349,455,101,48);
-        Buttons newRestaurant = new Buttons(673,470,88,40);
-        Buttons newCostumer = new Buttons(673,542,88,40);
-        Buttons backScreen = new Buttons(48,511, 39,39);
+        Buttons signIn = new Buttons(349, 455, 101, 48);
+        Buttons newRestaurant = new Buttons(673, 470, 88, 40);
+        Buttons newCostumer = new Buttons(673, 542, 88, 40);
+
         label.add(signIn);
         label.add(newRestaurant);
         label.add(newCostumer);
-        label.add(backScreen);
+
 
         signIn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ClientHome clientHome = new ClientHome();
-                clientHome.abrirClientHome();
-                dispose();
+
+                if (App.users.contains(new User(loginCamp.getText(),passwordCamp.getText(),0, 0))){
+                    ClientHome clientHome = new ClientHome();
+                    clientHome.abrirClientHome();
+                    dispose();
+                }
+                else if (App.restaurants.contains(new Restaurant(loginCamp.getText(), passwordCamp.getText(), 0, 0))){
+                    RestaurantHome restaurantHome = new RestaurantHome();
+                    restaurantHome.openRestaurantHome();
+                    dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null, "something went wrong");
+                }
             }
         });
 
@@ -64,9 +77,9 @@ public class LoginScreen extends JFrame {
         });
     }
 
-    public static void main(String[] args) {
+    public void openLoginScreen() {
         LoginScreen frame = new LoginScreen();
-        frame.setSize(800,600);
+        frame.setSize(800, 600);
         frame.setResizable(false);
         frame.setVisible(true);
     }

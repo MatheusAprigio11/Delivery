@@ -23,8 +23,14 @@ public class RestaurantHome extends JFrame{
         label.add(newDish);
         label.add(logOut);
 
+        logOut.addActionListener(e -> {
+            LoginScreen loginScreen = new LoginScreen();
+            loginScreen.openLoginScreen();
+            dispose();
+        });
+
     }
-    public static void main(String[] args) {
+    public void openRestaurantHome() {
         RestaurantHome frame = new RestaurantHome();
         frame.setSize(800,600);
         frame.setResizable(false);

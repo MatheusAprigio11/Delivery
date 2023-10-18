@@ -32,10 +32,11 @@ public class SignUpClient extends JFrame {
         label.add(posY);
 
         Buttons signUpRegister = new Buttons(338,488,196,65);
+        Buttons backScreen = new Buttons(48,511, 39,39);
 
 
         signUpRegister.addActionListener(e -> {
-            if (name.getText().equals("") || password.getText().equals("") || posX.getText().equals("") || posY.getText().equals("")){
+            if (name.getText().equals("") || password.getText().equals("") || posX.getText().equals("") || posY.getText().equals("")){ //isEmpty
                 JOptionPane.showMessageDialog(null, "fill correct all the fields.");
             }else {
                 User user = new User(name.getText(), password.getText(), Integer.parseInt(posX.getText()), Integer.parseInt(posY.getText()));
@@ -48,7 +49,15 @@ public class SignUpClient extends JFrame {
                 System.out.println(usu.getPassword());
             }
         });
+
+        backScreen.addActionListener(e -> {
+            LoginScreen loginScreen = new LoginScreen();
+            loginScreen.openLoginScreen();
+            dispose();
+        });
+
         label.add(signUpRegister);
+        label.add(backScreen);
 
     }
     public void openSignUpClient() {

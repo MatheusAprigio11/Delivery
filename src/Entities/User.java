@@ -1,5 +1,7 @@
 package Entities;
 
+import java.util.Objects;
+
 public class User {
 
     private String password;
@@ -46,6 +48,20 @@ public class User {
 
     public void setPosY(int posY) {
         this.posY = posY;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return password.equals(user.password) && username.equals(user.username);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(password, username);
     }
 }
 
