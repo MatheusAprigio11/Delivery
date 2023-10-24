@@ -1,10 +1,14 @@
 package Entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Restaurant {
     private String password;
     public String restaurantName;
+
+    public List<Dish> dishes;
     private int posX;
     private int posY;
 
@@ -13,7 +17,7 @@ public class Restaurant {
         this.setPassword(password);
         this.posX = posX;
         this.posY = posY;
-
+        this.dishes = new ArrayList<Dish>();
     }
 
     public String getPassword() {
@@ -30,6 +34,12 @@ public class Restaurant {
 
     public void setRestaurantName(String restaurantName) {
         this.restaurantName = restaurantName;
+    }
+
+
+    public void addDishes(String dishName, String price){
+        Dish dish = new Dish(dishName, price);
+        App.dishes.add(dish);
     }
 
     @Override

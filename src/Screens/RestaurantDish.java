@@ -28,7 +28,7 @@ public class RestaurantDish extends JFrame{
         label.add(register);
 
     }
-    public static void main(String[] args) {
+    public void openRestaurantDish() {
         RestaurantDish frame = new RestaurantDish();
         frame.setSize(800,600);
         frame.setResizable(false);

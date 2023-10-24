@@ -7,6 +7,8 @@ import java.util.ArrayList;
 public class App {
     public static ArrayList<User> users = new ArrayList<>();
     public static ArrayList<Restaurant> restaurants = new ArrayList<>();
+
+    public static ArrayList<Dish> dishes = new ArrayList<>();
     public App() {
         LoginScreen start = new LoginScreen();
         start.openLoginScreen();
