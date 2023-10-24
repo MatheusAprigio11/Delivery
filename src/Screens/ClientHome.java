@@ -23,6 +23,12 @@ public class ClientHome extends JFrame {
         label.add(newOrder);
         label.add(logOut);
 
+        newOrder.addActionListener(e -> {
+            NewOrder newOrderScreen = new NewOrder();
+            newOrderScreen.openNewOrderScreen();
+            dispose();
+        });
+
         logOut.addActionListener(e -> {
             LoginScreen loginScreen = new LoginScreen();
             loginScreen.openLoginScreen();

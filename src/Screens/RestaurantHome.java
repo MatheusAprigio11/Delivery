@@ -1,6 +1,9 @@
 package Screens;
 
 import Components.Buttons;
+import Entities.App;
+import Entities.Dish;
+import Entities.Restaurant;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,11 +11,12 @@ import java.util.Objects;
 
 public class RestaurantHome extends JFrame{
     JLabel label;
-    public RestaurantHome() {
+    public RestaurantHome( ) {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         Container frame = getContentPane();
         frame.setLayout(null);
-
+        App.restaurantLogged.dishes.add(new Dish("Banana com canela", "10.5"));
+        System.out.println(App.restaurantLogged.dishes);
         ImageIcon wallpaper = new ImageIcon(Objects.requireNonNull(getClass().getResource("../images/GIRestaurantHome.png")));
         label = new JLabel(wallpaper);
         label.setBounds(-5, -30, 800, 600);
@@ -23,6 +27,12 @@ public class RestaurantHome extends JFrame{
         label.add(newDish);
         label.add(logOut);
 
+        newDish.addActionListener(e -> {
+            RestaurantDish restaurantDish = new RestaurantDish();
+            restaurantDish.openRestaurantDish();
+            dispose();
+        });
+
         logOut.addActionListener(e -> {
             LoginScreen loginScreen = new LoginScreen();
             loginScreen.openLoginScreen();
@@ -30,7 +40,7 @@ public class RestaurantHome extends JFrame{
         });
 
     }
-    public void openRestaurantHome() {
+    public static void openRestaurantHome() {
         RestaurantHome frame = new RestaurantHome();
         frame.setSize(800,600);
         frame.setResizable(false);

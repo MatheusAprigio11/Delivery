@@ -2,6 +2,8 @@ package Screens;
 
 import Components.Buttons;
 import Components.Inputs;
+import Entities.App;
+import Entities.Dish;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,8 +26,17 @@ public class RestaurantDish extends JFrame{
         label.add(nameDish);
         label.add(priceDish);
 
+
+
         Buttons register = new Buttons(338,485,140,59);
         label.add(register);
+
+        register.addActionListener(e -> {
+            App.restaurantLogged.dishes.add(new Dish(nameDish.getText(), priceDish.getText()));
+            JOptionPane.showMessageDialog(null, "Prato " + nameDish.getText() + " cadastrado com sucesso.");
+            RestaurantHome.openRestaurantHome();
+            dispose();
+        });
 
     }
     public void openRestaurantDish() {

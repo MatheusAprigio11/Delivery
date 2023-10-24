@@ -42,15 +42,26 @@ public class LoginScreen extends JFrame {
         signIn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                System.out.println(loginCamp.getText() + passwordCamp.getText());
 
                 if (App.users.contains(new User(loginCamp.getText(),passwordCamp.getText(),0, 0))){
+                    for (User userlog : App.users) {
+                        if (userlog.equals(new User(loginCamp.getText(), passwordCamp.getText(), 0, 0))){
+                            App.userLogged = userlog;
+                        }
+                    }
+
                     ClientHome clientHome = new ClientHome();
                     clientHome.abrirClientHome();
                     dispose();
                 }
                 else if (App.restaurants.contains(new Restaurant(loginCamp.getText(), passwordCamp.getText(), 0, 0))){
-                    RestaurantHome restaurantHome = new RestaurantHome();
-                    restaurantHome.openRestaurantHome();
+                    for (Restaurant rest : App.restaurants) {
+                        if (rest.equals(new Restaurant(loginCamp.getText(), passwordCamp.getText(), 0, 0))){
+                            App.restaurantLogged = rest;
+                        }
+                    }
+                    RestaurantHome.openRestaurantHome();
                     dispose();
                 }else{
                     JOptionPane.showMessageDialog(null, "something went wrong");
