@@ -17,6 +17,7 @@ public class App {
         start.openLoginScreen();
         User userAdmin = new User("adminClient", "admin123", 0, 0);
         Restaurant resAdmin = new Restaurant("adminRestaurant", "res123", 0, 0);
+        resAdmin.dishes.add(new Dish("Banana com canela", "10.5"));
         users.add(userAdmin);
         restaurants.add(resAdmin);
     }

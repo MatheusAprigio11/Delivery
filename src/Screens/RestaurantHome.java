@@ -15,7 +15,6 @@ public class RestaurantHome extends JFrame{
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         Container frame = getContentPane();
         frame.setLayout(null);
-        App.restaurantLogged.dishes.add(new Dish("Banana com canela", "10.5"));
         System.out.println(App.restaurantLogged.dishes);
         ImageIcon wallpaper = new ImageIcon(Objects.requireNonNull(getClass().getResource("../images/GIRestaurantHome.png")));
         label = new JLabel(wallpaper);

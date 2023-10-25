@@ -44,7 +44,7 @@ public class NewOrder extends JFrame{
         });
     }
 
-    public void openNewOrderScreen(){
+    public static void openNewOrderScreen(){
         NewOrder frame = new NewOrder();
         frame.setSize(800, 600);
         frame.setResizable(false);
