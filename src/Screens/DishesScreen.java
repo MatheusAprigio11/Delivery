@@ -2,6 +2,7 @@ package Screens;
 
 import Components.Buttons;
 import Entities.Dish;
+import Entities.Order;
 import Entities.Restaurant;
 
 import javax.swing.*;
@@ -13,6 +14,8 @@ public class DishesScreen extends JFrame{
     JComboBox<Dish> allDishes;
     JLabel label;
     public DishesScreen() {
+        Order order = new Order();
+
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         Container frame = getContentPane();
         frame.setLayout(null);
@@ -25,7 +28,7 @@ public class DishesScreen extends JFrame{
         System.out.println(NewOrder.selectRestaurant.getSelectedItem());
 
         DefaultComboBoxModel<Dish> model = new DefaultComboBoxModel<>(selectedRestaurant.dishes.toArray(new Dish[0]));
-        allDishes = new JComboBox<>(model); // Definir o modelo no JComboBox
+        allDishes = new JComboBox<>(model);
 
         allDishes.setBounds(100, 100, 300, 100);
         label.add(allDishes);
@@ -39,6 +42,19 @@ public class DishesScreen extends JFrame{
 
 
         frame.add(label);
+
+
+        addCart.addActionListener(e -> {
+            Dish selectedDish = (Dish) allDishes.getSelectedItem();
+            Order.orderList.add(selectedDish);
+            System.out.println(selectedDish);
+        });
+
+        finish.addActionListener(e -> {
+            FinishScreen finishScreen = new FinishScreen();
+            finishScreen.openFinishScreen();
+            dispose();
+        });
 
         back.addActionListener(e -> {
             NewOrder.openNewOrderScreen();

@@ -12,6 +12,8 @@ public class Dish {
 
     @Override
     public String toString() {
-        return dishName + price;
+        return dishName + ", " + "R$: " + price;
     }
+
+
 }
