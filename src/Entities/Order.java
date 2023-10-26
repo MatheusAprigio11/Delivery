@@ -23,6 +23,12 @@ public class Order {
             System.out.format("%-20s%-10s%n", "| " + item.dishName, "| R$: " + item.price);
         }
         System.out.println("-----------------------------------");
-        System.out.println("Total R$: " + FinishScreen.valueShow);
+        if (FinishScreen.valueShow == null) {
+            FinishScreen.valueShow = "R$: 00.00";
+            System.out.println(FinishScreen.valueShow);
+        }else {
+            System.out.println("Total R$: " + FinishScreen.valueShow);
+        }
+        System.out.println("Payment form: "+ FinishScreen.payment.getSelectedItem());
         }
 }

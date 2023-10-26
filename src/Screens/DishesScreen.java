@@ -29,7 +29,7 @@ public class DishesScreen extends JFrame{
         DefaultComboBoxModel<Dish> model = new DefaultComboBoxModel<>(selectedRestaurant.dishes.toArray(new Dish[0]));
         allDishes = new JComboBox<>(model);
 
-        allDishes.setBounds(100, 100, 300, 100);
+        allDishes.setBounds(315, 292, 215, 35);
         label.add(allDishes);
 
         Buttons back = new Buttons(48,511,39,39);
@@ -45,6 +45,7 @@ public class DishesScreen extends JFrame{
 
         addCart.addActionListener(e -> {
             Dish selectedDish = (Dish) allDishes.getSelectedItem();
+            JOptionPane.showMessageDialog(null, "Dish "+ selectedDish.dishName + " added!");
             Order.orderList.add(selectedDish);
         });
 

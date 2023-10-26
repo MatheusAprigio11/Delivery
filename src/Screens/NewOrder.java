@@ -25,7 +25,7 @@ public class NewOrder extends JFrame{
         label.add(back);
         label.add(next);
 
-        selectRestaurant.setBounds(100, 100, 100, 100);
+        selectRestaurant.setBounds(316, 292, 180, 35);
         label.add(selectRestaurant);
 
         frame.add(label);

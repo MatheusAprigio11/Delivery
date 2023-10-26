@@ -16,6 +16,8 @@ public class FinishScreen extends JFrame{
     Texts textField;
     float value = 0.0f;
     public static String valueShow;
+
+    public static JComboBox<String> payment;
     public FinishScreen() {
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -42,6 +44,12 @@ public class FinishScreen extends JFrame{
         }
 
 
+        payment = new JComboBox<>();
+        payment.addItem("Debit");
+        payment.addItem("Credit");
+        payment.addItem("Money");
+
+        payment.setBounds(594,168,156,67);
 
         textField = new Texts("R$: " + valueShow, 633,369,77,100);
 
@@ -67,6 +75,8 @@ public class FinishScreen extends JFrame{
             dispose();
         });
 
+
+        label.add(payment);
         label.add(textField);
         label.add(finish);
         label.add(back);
