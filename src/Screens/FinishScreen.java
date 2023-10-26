@@ -31,10 +31,19 @@ public class FinishScreen extends JFrame{
 
         JTable table = new JTable(tableModel);
         scrollPane = new JScrollPane(table);
-        scrollPane.setBounds(50,100,700,400);
+
+        scrollPane.setBounds(50,90,465,400);
 
         Buttons back = new Buttons(48,511,39,39);
         Buttons finish = new Buttons(340, 505, 112, 52);
+
+        finish.addActionListener(e -> {
+            JOptionPane.showMessageDialog(null, "The order has been sent. Printing the order...");
+            Order.printOrder();
+            ClientHome clientHome = new ClientHome();
+            clientHome.abrirClientHome();
+            dispose();
+        });
 
         back.addActionListener(e -> {
             DishesScreen dishesScreen = new DishesScreen();
