@@ -42,7 +42,6 @@ public class LoginScreen extends JFrame {
         signIn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(loginCamp.getText() + passwordCamp.getText());
 
                 if (App.users.contains(new User(loginCamp.getText(),passwordCamp.getText(),0, 0))){
                     for (User userlog : App.users) {

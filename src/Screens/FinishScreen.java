@@ -1,6 +1,7 @@
 package Screens;
 
 import Components.Buttons;
+import Components.Texts;
 import Entities.Dish;
 import Entities.Order;
 
@@ -12,11 +13,16 @@ import java.util.Objects;
 public class FinishScreen extends JFrame{
     JLabel label;
     JScrollPane scrollPane;
+    Texts textField;
+    float value = 0.0f;
+    public static String valueShow;
     public FinishScreen() {
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         Container frame = getContentPane();
         frame.setLayout(null);
+
+
 
         ImageIcon wallpaper = new ImageIcon(Objects.requireNonNull(getClass().getResource("../images/GICart.png")));
         label = new JLabel(wallpaper);
@@ -29,10 +35,20 @@ public class FinishScreen extends JFrame{
             tableModel.addRow(row);
         }
 
+        for (Dish priceDish : Order.orderList) {
+            float dishPrice = Float.parseFloat(priceDish.price);
+            value += dishPrice;
+            valueShow = String.valueOf(value);
+        }
+
+
+
+        textField = new Texts("R$: " + valueShow, 633,369,77,100);
+
         JTable table = new JTable(tableModel);
         scrollPane = new JScrollPane(table);
 
-        scrollPane.setBounds(50,90,465,400);
+        scrollPane.setBounds(40,90,445,380);
 
         Buttons back = new Buttons(48,511,39,39);
         Buttons finish = new Buttons(340, 505, 112, 52);
@@ -51,6 +67,7 @@ public class FinishScreen extends JFrame{
             dispose();
         });
 
+        label.add(textField);
         label.add(finish);
         label.add(back);
         label.add(scrollPane);

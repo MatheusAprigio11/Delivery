@@ -24,8 +24,7 @@ public class ClientHome extends JFrame {
         label.add(logOut);
 
         newOrder.addActionListener(e -> {
-            NewOrder newOrderScreen = new NewOrder();
-            newOrderScreen.openNewOrderScreen();
+            NewOrder.openNewOrderScreen();
             dispose();
         });
 

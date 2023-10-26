@@ -25,7 +25,6 @@ public class DishesScreen extends JFrame{
         label.setBounds(-5, -30, 800, 600);
 
         Restaurant selectedRestaurant = (Restaurant) NewOrder.selectRestaurant.getSelectedItem();
-        System.out.println(NewOrder.selectRestaurant.getSelectedItem());
 
         DefaultComboBoxModel<Dish> model = new DefaultComboBoxModel<>(selectedRestaurant.dishes.toArray(new Dish[0]));
         allDishes = new JComboBox<>(model);
@@ -47,7 +46,6 @@ public class DishesScreen extends JFrame{
         addCart.addActionListener(e -> {
             Dish selectedDish = (Dish) allDishes.getSelectedItem();
             Order.orderList.add(selectedDish);
-            System.out.println(selectedDish);
         });
 
         finish.addActionListener(e -> {
